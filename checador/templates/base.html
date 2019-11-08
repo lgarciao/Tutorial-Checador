@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<title>{% block title %}{% endblock %} - Checador</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <h1>
+    <a lass="nav-link" href="{{ url_for('index') }}">Checador</a>
+  </h1>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup"></div>
+    <ul class="navbar-nav">
+      {% if g.user %}
+      <li class="nav-item">
+        <span class="nav-link">{{ g.user['username'] }}</span>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('auth.logout') }}">Cerrar sesión</a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('auth.register') }}">Registrarse</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('auth.login') }}">Iniciar sesión</a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
+
+<section class="container">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  <div class="form-row">
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-danger col-md-6" role="alert">{{ message }}</div>
+    {% endfor %}
+  </div>
+  <div class="container">
+  {% block content %}{% endblock %}
+  </div>
+</section>

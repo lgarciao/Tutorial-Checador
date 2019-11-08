@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Registro de entradas y salidas{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+      <div class="form-row justify-content-center">
+          <div class="form-group col-md-4">
+            <label for="username">Usuario</label>
+            <input class="form-control" name="username" id="username" required>
+          </div>
+        </div>
+        <div class="form-row justify-content-center">
+          <div class="form-group col-md-4">
+            <label for="password">Contraseña</label>
+            <input class="form-control" type="password" name="password" id="password" required>
+          </div>
+        </div>
+    <div class="form-group row justify-content-center">
+      <div class="col-md-3">
+        <input type="submit" class="btn btn-primary form-control" value="Checar">
+      </div>
+    </div>
+  </form>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Usuario</th>
+        <th scope="col">Entrada</th>
+        <th scope="col">Salida</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for checada in checadas %}
+      <tr>
+        <th>{{ checada['username'] }}</th>
+        <th>{{ checada['checa_entrada'] }}</th>
+        {% if checada['checa_salida'] %}
+          <th>{{ checada['checa_salida'] }}</th>
+        {% else %}
+          <th> </th>
+        {% endif %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

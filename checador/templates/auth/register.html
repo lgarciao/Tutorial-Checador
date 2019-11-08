@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Registro de usuarios{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <div class="form-row justify-content-center">
+      <div class="form-group col-md-3">  
+        <label for="nombre">* Nombre</label>
+        <input class="form-control" type="text" name="nombre" id="nombre" required>
+      </div>
+      <div class="form-group col-md-3">
+        <label for="ap_1">* Primer apellido</label>
+        <input class="form-control" name="ap_1" id="ap_1" required>
+      </div>
+    </div>
+    <div class="form-row justify-content-center">  
+      <div class="form-group col-md-6">
+        <label for="ap_2">Segundo apellido</label>
+        <input class="form-control" name="ap_2" id="ap_2">
+      </div>
+    </div>
+    <div class="form-row justify-content-center">
+      <div class="form-group col-md-3">
+        <label for="username">* Usuario</label>
+        <input class="form-control" name="username" id="username" required>
+      </div>
+      <div class="form-group col-md-3">
+        <label for="password">* Contraseña</label>
+        <input class="form-control" type="password" name="password" id="password" required>
+      </div>
+    </div>
+    <div class="form-row justify-content-center">
+      <div class="form-group col-md-6">
+        <label for="email">Correo electrónico</label>
+        <input class="form-control" type="email" name="email" id="email">
+      </div>
+    </div>
+    <div class="form-group row justify-content-center">
+      <div class="col-md-3">
+        <input type="submit" class="btn btn-primary form-control" value="Registrarse">
+      </div>
+    </div>
+  </form>
+{% endblock %}
